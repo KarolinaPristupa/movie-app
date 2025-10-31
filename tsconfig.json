@@ -1,5 +1,10 @@
 {
   "compilerOptions": {
+    "types": ["node"],
+    "target": "ESNext",
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "baseUrl": "./",
     "jsx": "react-jsx",
     "paths": {
@@ -11,5 +16,6 @@
       "@store/*": ["src/store/*"],
       "@types/*": ["src/types/*"]
     }
-  }
+  },
+  "include": ["src", "vite.config.ts"]
 }

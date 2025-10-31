@@ -19,6 +19,11 @@ export default [
         console: true,
       },
     },
+    env: {
+      browser: true,
+      node: true,
+      es2021: true,
+    },
     plugins: {
       react,
       'react-hooks': reactHooks,
