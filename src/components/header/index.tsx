@@ -45,7 +45,6 @@ const Header: React.FC = () => {
                     ? `${styles.navLink} ${styles.isActive}`
                     : styles.navLink
                 }
-                aria-current={({ isActive }) => (isActive ? 'page' : undefined)}
                 end={item.to === '/'}
               >
                 {item.label}
