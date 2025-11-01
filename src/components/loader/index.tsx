@@ -1,12 +1,20 @@
 import React from 'react';
 import styles from './index.module.scss';
 
-const Loader: React.FC = () => {
+interface LoaderProps {
+  fullscreen?: boolean;
+}
+
+const Loader: React.FC<LoaderProps> = ({ fullscreen = false }) => {
   return (
-    <div className={styles['neon-loader']}>
-      <div className={styles.ring}></div>
-      <div className={styles.ring}></div>
-      <div className={styles.ring}></div>
+    <div
+      className={fullscreen ? styles.loaderOverlayFull : styles.loaderOverlay}
+    >
+      <div className={styles.neonLoader}>
+        <div className={styles.ring}></div>
+        <div className={styles.ring}></div>
+        <div className={styles.ring}></div>
+      </div>
     </div>
   );
 };

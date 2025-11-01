@@ -1,5 +1,7 @@
 declare const classNames: {
-  readonly "neon-loader": "neon-loader";
+  readonly loaderOverlay: "loaderOverlay";
+  readonly loaderOverlayFull: "loaderOverlayFull";
+  readonly neonLoader: "neonLoader";
   readonly ring: "ring";
 };
 export = classNames;
