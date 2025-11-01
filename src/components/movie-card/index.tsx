@@ -6,7 +6,7 @@ import styles from './index.module.scss';
 import useGenres from '@/hooks/useGenres';
 import Loader from '@components/loader';
 
-const IMG_URL = 'https://image.tmdb.org/t/p/w500';
+const IMG_URL = 'https://image.tmdb.org/t/p/w300';
 
 interface MovieCardProps {
   movie: Movie;
@@ -32,6 +32,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
           className={styles.poster}
           src={movie.poster_path ? IMG_URL + movie.poster_path : 'no-image.png'}
           alt={movie.title}
+          loading="lazy"
         />
       </div>
 
