@@ -1,6 +1,9 @@
 import type { Movie } from '@/types/movie';
+import type { Genre } from '@/types/genres';
+import React, { useState } from 'react';
 
 import styles from './index.module.scss';
+import useGenres from '@/hooks/useGenres';
 
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
@@ -9,6 +12,16 @@ interface MovieCardProps {
 }
 
 const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
+  const { genres, loading, error } = useGenres();
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Ошибка загрузки</p>;
+
+  const genreNames = movie.genre_ids
+    .map((id) => genres.find((g) => g.id === id)?.name)
+    .filter(Boolean)
+    .join(', ');
+
   return (
     <div className={styles.card}>
       <div className={styles.rating}>{movie.vote_average.toFixed(1)}</div>
@@ -23,7 +36,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
 
       <div className={styles.hoverInfo}>
         <h4 className={styles.title}>{movie.title}</h4>
-        <p className={styles.genres}>{movie.genre_ids.join(', ')}</p>
+        <p className={styles.genres}>{genreNames}</p>
         <p className={styles.desc}>{movie.overview}</p>
         <p className={styles.date}>{movie.release_date}</p>
       </div>
