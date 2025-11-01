@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 
 import styles from './index.module.scss';
 import useGenres from '@/hooks/useGenres';
+import Loader from '@components/loader';
 
 const IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
@@ -14,7 +15,7 @@ interface MovieCardProps {
 const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
   const { genres, loading, error } = useGenres();
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loader />;
   if (error) return <p>Ошибка загрузки</p>;
 
   const genreNames = movie.genre_ids
