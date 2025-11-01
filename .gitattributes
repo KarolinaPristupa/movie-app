@@ -1,0 +1,8 @@
+*.ts linguist-detectable=true
+*.tsx linguist-detectable=true
+
+# Игнорируем сгенерированные файлы
+*.js linguist-generated=true
+*.jsx linguist-generated=true
+dist/* linguist-generated=true
+build/* linguist-generated=true
