@@ -1,5 +1,8 @@
 declare const classNames: {
   readonly card: "card";
+  readonly favorite: "favorite";
+  readonly heartIcon: "heartIcon";
+  readonly filled: "filled";
   readonly rating: "rating";
   readonly hoverInfo: "hoverInfo";
   readonly desc: "desc";
