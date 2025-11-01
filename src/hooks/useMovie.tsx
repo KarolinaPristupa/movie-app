@@ -16,7 +16,7 @@ const useMovie = () => {
       try {
         setLoading(true);
         const { data } = await axios.get<MovieResponse>(
-          `${BASE_URL}/movie/popular?api_key=${API_KEY}&language=en-US&page=1`,
+          `${BASE_URL}/movie/now_playing?api_key=${API_KEY}&language=en-US&page=1`,
         );
         setMovies(data.results);
       } catch (error) {
