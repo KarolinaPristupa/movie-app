@@ -1,8 +1,14 @@
 import AppRouter from '@/router';
+import Header from '@components/header';
 import './index.scss';
 
 const App = () => {
-  return <AppRouter />;
+  return (
+    <>
+      <Header />
+      <AppRouter />
+    </>
+  );
 };
 
 export default App;
