@@ -8,7 +8,8 @@ import noImage from '@/assets/no-image.png';
 
 import styles from './index.module.scss';
 
-const IMG_URL = 'https://image.tmdb.org/t/p/w300';
+const IMG_BASE = 'https://image.tmdb.org/t/p';
+const SIZE = 'w300';
 
 interface MovieCardProps {
   movie: Movie;
@@ -39,9 +40,19 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
       <div className={styles.posterWrap}>
         <img
           className={styles.poster}
-          src={movie.poster_path ? IMG_URL + movie.poster_path : noImage}
+          src={
+            movie.poster_path
+              ? `${IMG_BASE}/${SIZE}${movie.poster_path}`
+              : noImage
+          }
           alt={movie.title}
           loading="lazy"
+          onError={(e) => {
+            const target = e.currentTarget as HTMLImageElement;
+            if (target.src !== noImage) {
+              target.src = noImage;
+            }
+          }}
         />
       </div>
 
