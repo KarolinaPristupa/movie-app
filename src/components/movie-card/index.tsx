@@ -4,6 +4,7 @@ import useFavorites from '@/hooks/useFavorites';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import useGenres from '@/hooks/useGenres';
 import Loader from '@components/loader';
+import noImage from '@/assets/no-image.png';
 
 import styles from './index.module.scss';
 
@@ -38,7 +39,7 @@ const MovieCard: React.FC<MovieCardProps> = ({ movie }) => {
       <div className={styles.posterWrap}>
         <img
           className={styles.poster}
-          src={movie.poster_path ? IMG_URL + movie.poster_path : 'no-image.png'}
+          src={movie.poster_path ? IMG_URL + movie.poster_path : noImage}
           alt={movie.title}
           loading="lazy"
         />
