@@ -1,5 +1,6 @@
 import AppRouter from '@/router';
 import Header from '@components/header';
+import Footer from '@/components/footer';
 import './index.scss';
 
 const App = () => {
@@ -7,6 +8,7 @@ const App = () => {
     <>
       <Header />
       <AppRouter />
+      <Footer />
     </>
   );
 };
