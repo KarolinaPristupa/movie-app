@@ -23,21 +23,8 @@ const Search: React.FC<SearchProps> = ({ query, setQuery }) => {
         className={styles.searchInput}
       />
 
-      {query.trim() && (
-        <>
-          {loading && <Loader />}
-          {error && <p>{error}</p>}
-          <div className={styles.resultsGrit}>
-            {searchResults.length ? (
-              searchResults.map((movie) => (
-                <MovieCard key={movie.id} movie={movie} />
-              ))
-            ) : (
-              <p>No movies found</p>
-            )}
-          </div>
-        </>
-      )}
+      {loading && <Loader />}
+      {error && <p>{error}</p>}
     </div>
   );
 };
