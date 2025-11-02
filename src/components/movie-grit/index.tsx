@@ -1,7 +1,5 @@
 import React from 'react';
-import useMovie from '@/hooks/useMovie';
 import MovieCard from '@components/movie-card';
-import Loader from '@components/loader';
 import { Movie } from '@/types/movie';
 
 import styles from './index.module.scss';

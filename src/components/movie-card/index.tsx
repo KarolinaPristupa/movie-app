@@ -1,6 +1,6 @@
 import type { Movie } from '@/types/movie';
 import React from 'react';
-import useFavorites from '@/hooks/useFavorites';
+import { useFavorites } from '@/contexts/FavoritesContext';
 import { AiOutlineHeart, AiFillHeart } from 'react-icons/ai';
 import useGenres from '@/hooks/useGenres';
 import Loader from '@components/loader';
