@@ -15,7 +15,6 @@ const Search: React.FC<SearchProps> = ({ query, setQuery }) => {
 
   return (
     <div className={styles.searchWrapper}>
-      {/* Поле поиска всегда */}
       <input
         type="text"
         placeholder="Search movies..."
