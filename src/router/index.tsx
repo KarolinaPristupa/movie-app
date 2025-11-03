@@ -5,8 +5,8 @@ import Favorite from '@pages/favorite';
 const AppRouter = () => {
   return (
     <Routes>
-      <Route path="/movie-app/" element={<Home />} />
-      <Route path="/movie-app/favorites" element={<Favorite />} />
+      <Route path="/" element={<Home />} />
+      <Route path="/favorites" element={<Favorite />} />
     </Routes>
   );
 };
