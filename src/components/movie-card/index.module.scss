@@ -126,3 +126,23 @@
   font-size: 13px;
   color: rgba(200,200,200,.7);
 }
+
+.movieCard {
+  position: relative;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform .25s ease, opacity .25s ease;
+  will-change: transform, opacity;
+  height: 300px;
+}
+
+.movieCard.enter {
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.movieCard.enterActive {
+  opacity: 1;
+  transform: translateY(0);
+}

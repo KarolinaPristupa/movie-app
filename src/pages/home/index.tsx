@@ -35,20 +35,16 @@ const Home = () => {
       <Search query={query} setQuery={setQuery} />
 
       {loading ? (
-        <div style={{ marginTop: 50 }}>
-          <Loader />
-        </div>
+        <MovieGrid movies={Array(8).fill(null)} skeleton />
       ) : moviesToShow.length > 0 ? (
         <>
           <h2 className={styles.subTitle}>Latest Releases</h2>
           <MovieGrid movies={moviesToShow} />
         </>
+      ) : debouncedQuery.trim() ? (
+        <p className={styles.subTitle}>No movies found for this search.</p>
       ) : (
-        <p className={styles.subTitle}>
-          {debouncedQuery.trim()
-            ? 'No movies found for this search.'
-            : 'No movies available.'}
-        </p>
+        <p className={styles.subTitle}>No movies available.</p>
       )}
     </div>
   );

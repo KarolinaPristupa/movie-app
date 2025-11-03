@@ -4,5 +4,6 @@ declare const classNames: {
   readonly paginationControls: "paginationControls";
   readonly arrowBtn: "arrowBtn";
   readonly pageInfo: "pageInfo";
+  readonly fadeWrap: "fadeWrap";
 };
 export = classNames;

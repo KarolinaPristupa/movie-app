@@ -3,10 +3,11 @@ import Loader from '@components/loader';
 
 import styles from './index.module.scss';
 import MovieCard from '@components/movie-card';
+import React from 'react';
 
 const Pagination: React.FC = () => {
   const { visibleMovies, loading, error, next, prev, currentPage, totalPages } =
-    usePopular(4);
+    usePopular();
 
   if (loading) return <Loader />;
   if (error) return <p>{error}</p>;
@@ -15,7 +16,9 @@ const Pagination: React.FC = () => {
     <div className={styles.moviePagination}>
       <div className={styles.moviesGrid}>
         {visibleMovies.map((movie) => (
-          <MovieCard key={movie.id} movie={movie} />
+          <div key={movie.id} className={styles.fadeWrap}>
+            <MovieCard movie={movie} />
+          </div>
         ))}
       </div>
 

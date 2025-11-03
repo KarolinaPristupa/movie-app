@@ -6,20 +6,21 @@ import type { MovieResponse } from '@/types/movie-response';
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const BASE_URL = 'https://api.themoviedb.org/3';
 
-const useSearch = (query: string, delay = 500) => {
+const useSearch = (query: string) => {
   const [movie, setMovie] = useState<Movie[]>([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+
   useEffect(() => {
     if (!query) {
       setMovie([]);
       return;
     }
 
-    const handler = setTimeout(async () => {
+    const fetchData = async () => {
       try {
         setLoading(true);
-        setError(null);
+        setError('');
         const { data } = await axios.get<MovieResponse>(
           `${BASE_URL}/search/movie`,
           {
@@ -33,14 +34,15 @@ const useSearch = (query: string, delay = 500) => {
           },
         );
         setMovie(data.results);
-      } catch (error) {
+      } catch {
         setError('Не удалось загрузить результаты поиска');
       } finally {
         setLoading(false);
       }
-    }, delay);
-    return () => clearTimeout(handler);
-  }, [query, delay]);
+    };
+
+    fetchData();
+  }, [query]);
 
   return { movie, loading, error };
 };

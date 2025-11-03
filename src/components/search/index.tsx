@@ -1,9 +1,4 @@
-import { useState } from 'react';
-import useSearch from '@/hooks/useSearch';
-import MovieCard from '@components/movie-card';
-
 import styles from './index.module.scss';
-import Loader from '@components/loader';
 
 interface SearchProps {
   query: string;
@@ -11,8 +6,6 @@ interface SearchProps {
 }
 
 const Search: React.FC<SearchProps> = ({ query, setQuery }) => {
-  const { movie: searchResults, loading, error } = useSearch(query);
-
   return (
     <div className={styles.searchWrapper}>
       <input
@@ -22,9 +15,6 @@ const Search: React.FC<SearchProps> = ({ query, setQuery }) => {
         onChange={(e) => setQuery(e.target.value)}
         className={styles.searchInput}
       />
-
-      {loading && <Loader />}
-      {error && <p>{error}</p>}
     </div>
   );
 };

@@ -12,5 +12,8 @@ declare const classNames: {
   readonly info: "info";
   readonly title: "title";
   readonly date: "date";
+  readonly movieCard: "movieCard";
+  readonly enter: "enter";
+  readonly enterActive: "enterActive";
 };
 export = classNames;
