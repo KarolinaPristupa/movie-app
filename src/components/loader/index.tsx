@@ -10,11 +10,7 @@ const Loader: React.FC<LoaderProps> = ({ fullscreen = false }) => {
     <div
       className={fullscreen ? styles.loaderOverlayFull : styles.loaderOverlay}
     >
-      <div className={styles.neonLoader}>
-        <div className={styles.ring}></div>
-        <div className={styles.ring}></div>
-        <div className={styles.ring}></div>
-      </div>
+      <div className={styles.neonLoader}></div>
     </div>
   );
 };

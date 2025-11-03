@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import MovieGrid from '@components/movie-grit';
 import Loader from '@components/loader';
 import useMovie from '@/hooks/useMovie';
@@ -10,11 +10,20 @@ import styles from './index.module.scss';
 
 const Home = () => {
   const [query, setQuery] = useState('');
-  const { movies: popularMovies, loading: loadingPopular } = useMovie();
-  const { movie: searchResults, loading: loadingSearch } = useSearch(query);
+  const [debouncedQuery, setDebouncedQuery] = useState('');
 
-  const moviesToShow = query.trim() ? searchResults : popularMovies;
-  const loading = query.trim() ? loadingSearch : loadingPopular;
+  // debounce search input (500ms)
+  useEffect(() => {
+    const t = setTimeout(() => setDebouncedQuery(query), 500);
+    return () => clearTimeout(t);
+  }, [query]);
+
+  const { movies: popularMovies, loading: loadingPopular } = useMovie();
+  const { movie: searchResults, loading: loadingSearch } =
+    useSearch(debouncedQuery);
+
+  const moviesToShow = debouncedQuery.trim() ? searchResults : popularMovies;
+  const loading = debouncedQuery.trim() ? loadingSearch : loadingPopular;
 
   return (
     <div>
@@ -25,15 +34,18 @@ const Home = () => {
 
       <Search query={query} setQuery={setQuery} />
 
-      {loading && <Loader />}
-      {!loading && moviesToShow.length > 0 ? (
+      {loading ? (
+        <div style={{ marginTop: 50 }}>
+          <Loader />
+        </div>
+      ) : moviesToShow.length > 0 ? (
         <>
           <h2 className={styles.subTitle}>Latest Releases</h2>
           <MovieGrid movies={moviesToShow} />
         </>
       ) : (
         <p className={styles.subTitle}>
-          {query.trim()
+          {debouncedQuery.trim()
             ? 'No movies found for this search.'
             : 'No movies available.'}
         </p>
